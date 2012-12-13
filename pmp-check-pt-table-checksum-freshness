@@ -197,7 +197,8 @@ haven't been checked recently:
       ' tables')
    FROM CHECKSUM_TABLE
    WHERE
-      ts < "TIMESTAMP_DATETIME"
+      ts < "TIMESTAMP_DATETIME" AND
+      chunk = 1 /* not every run will result in the same amount of chunks */
    HAVING COUNT(*) > 0
 
 The word CHECKSUM_TABLE is replaced by the value of the -T option.  If the table
